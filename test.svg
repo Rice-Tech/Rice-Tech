@@ -1,26 +1,642 @@
 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <style>
-    div {
-      color: white;
-      font: 18px serif;
-      height: 100%;
-      overflow: auto;
-    }
-  </style>
-
-  <polygon points="5,5 195,10 185,185 10,195" />
+      :root {
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        color-scheme: light dark;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        --primary-color: #1f4830;
+        --secondary-color: #e1e8fe;
+        --font-color: #e9fffd;
+        --bg-color: #081209;
+        --heading-color: #292922;
+      }
+      * {
+        min-width: 0;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-color);
+        color: var(--font-color);
+        box-sizing: border-box;
+        overflow-x: hidden;
+        font-family: Josefin Sans, Lucida Sans, Lucida Sans Regular,
+          Lucida Grande, Lucida Sans Unicode, Verdana, sans-serif;
+      }
+      #root {
+        padding: 0;
+      }
+      h3,
+      h1,
+      h2,
+      p {
+        margin: 0;
+        overflow-wrap: break-word;
+      }
+      h1,
+      h2 {
+        color: var(--secondary-color);
+        margin: 0;
+      }
+      h2 {
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        font-size: 50px;
+      }
+      .hero h2 {
+        text-align: left;
+      }
+      a {
+        color: var(--background-color);
+        text-decoration: none;
+      }
+      .wavy-divider {
+        width: 100%;
+        height: 100px;
+        background-size: 100% 100%;
+        position: absolute;
+      }
+      @keyframes colorAnimation {
+        50% {
+          background-color: #3a5c3a;
+        }
+      }
+      #profilePic {
+        border-radius: 45%;
+        width: 300px;
+        max-width: 40vw;
+        max-height: 40vw;
+        bottom: 0;
+        transition: transform 0.2s ease-in-out;
+        transform: scale(1) rotate(-2deg);
+        background-color: #80a790;
+        animation: colorAnimation 5s ease-in-out 1s 2;
+        z-index: 1;
+      }
+      #profilePic:hover {
+        transform: scale(1.2) rotate(1deg);
+      }
+      .devIcon {
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        border-radius: 15%;
+        padding: 5px;
+        font-size: 45px;
+      }
+      .devIcon:hover {
+        scale: 1.1;
+      }
+      .primary:not(.wavy-divider) {
+        background-color: var(--primary-color);
+      }
+      .primary.wavy-divider {
+        fill: var(--primary-color);
+      }
+      .secondary {
+        background-color: var(--secondary-color);
+      }
+      .bg {
+        background-color: var(--bg-color);
+      }
+      .row {
+        min-height: 250px;
+        position: relative;
+      }
+      .row.primary {
+        padding: 7.2vw 0;
+      }
+      .row.primary:before {
+        min-width: 0;
+        transform-origin: center center;
+        content: "";
+        width: 100%;
+        height: 7.5vw;
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        background-color: var(--bg-color);
+        -webkit-mask-image: url("data:image/svg+xml,%3csvg%20id='morph'%20fill='none'%20stroke='black'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201440%20123'%3e%3cpath%20d='M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0'%20fill='black'%20id='morph0'%3e%3canimate%20attributeName='d'%20dur='20s'%20repeatCount='indefinite'%20begin='0s'%20values='M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0;%20M0,49c77.24,-28.36%20158.29,-40.65%20240.19,-46.03c29.57,-1.94%2062.42,-5.95%2091.94,-1.81c17.17,2.41%2042.53,11.92%2058.66,17.77c26.63,9.66%2030.82,11.94%2057.61,21.17c57.79,19.9%20118.59,34.81%20180.16,32.78c73.49,-2.43%20136.88,-37.23%20206.33,-56.3c50.6,-13.89%20100.39,-15.01%20151.71,-4.51c10.02,2.05%2019.85,4.98%2029.88,6.96c50.02,9.88%20101.47,14.44%20152.09,20.22c71.15,8.12%20142.38,15.49%20213.64,22.58c2.76,0.27%2054.21,4.15%2057.79,8.97c4.21,5.66%201.11,46.07%20-9.69,51.69c-9.08,4.72%20-20.46,0%20-30.69,0c-20.46,0%20-40.92,0%20-61.38,0c-71.61,0%20-143.22,0%20-214.83,0c-276.21,0%20-552.42,0%20-828.63,0c-71.61,0%20-143.22,0%20-214.83,0c0,0%20-61.38,0%20-61.38,0c-7.18,-1.77%20-15.63,-5.34%20-18.57,-12.12c-4.07,-9.39%200,-20.46%200,-30.69c0,-10.23%200,-20.46%200,-30.69;%20M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0'%20keyTimes='0;%200.51;%201'%20fill='freeze'%20calcMode='spline'%20keySplines='.50%200%20.50%201;.50%200%20.50%201;'%3e%3c/animate%3e%3canimate%20attributeName='fill'%20dur='20s'%20repeatCount='indefinite'%20begin='0s'%20values='black;%20black;%20black'%20keyTimes='0;%200.51;%201'%20fill='freeze'%20calcMode='spline'%20keySplines='.50%200%20.50%201;.50%200%20.50%201;'%3e%3c/animate%3e%3c/path%3e%3c/svg%3e");
+        mask-image: url("data:image/svg+xml,%3csvg%20id='morph'%20fill='none'%20stroke='black'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201440%20123'%3e%3cpath%20d='M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0'%20fill='black'%20id='morph0'%3e%3canimate%20attributeName='d'%20dur='20s'%20repeatCount='indefinite'%20begin='0s'%20values='M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0;%20M0,49c77.24,-28.36%20158.29,-40.65%20240.19,-46.03c29.57,-1.94%2062.42,-5.95%2091.94,-1.81c17.17,2.41%2042.53,11.92%2058.66,17.77c26.63,9.66%2030.82,11.94%2057.61,21.17c57.79,19.9%20118.59,34.81%20180.16,32.78c73.49,-2.43%20136.88,-37.23%20206.33,-56.3c50.6,-13.89%20100.39,-15.01%20151.71,-4.51c10.02,2.05%2019.85,4.98%2029.88,6.96c50.02,9.88%20101.47,14.44%20152.09,20.22c71.15,8.12%20142.38,15.49%20213.64,22.58c2.76,0.27%2054.21,4.15%2057.79,8.97c4.21,5.66%201.11,46.07%20-9.69,51.69c-9.08,4.72%20-20.46,0%20-30.69,0c-20.46,0%20-40.92,0%20-61.38,0c-71.61,0%20-143.22,0%20-214.83,0c-276.21,0%20-552.42,0%20-828.63,0c-71.61,0%20-143.22,0%20-214.83,0c0,0%20-61.38,0%20-61.38,0c-7.18,-1.77%20-15.63,-5.34%20-18.57,-12.12c-4.07,-9.39%200,-20.46%200,-30.69c0,-10.23%200,-20.46%200,-30.69;%20M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0'%20keyTimes='0;%200.51;%201'%20fill='freeze'%20calcMode='spline'%20keySplines='.50%200%20.50%201;.50%200%20.50%201;'%3e%3c/animate%3e%3canimate%20attributeName='fill'%20dur='20s'%20repeatCount='indefinite'%20begin='0s'%20values='black;%20black;%20black'%20keyTimes='0;%200.51;%201'%20fill='freeze'%20calcMode='spline'%20keySplines='.50%200%20.50%201;.50%200%20.50%201;'%3e%3c/animate%3e%3c/path%3e%3c/svg%3e");
+        mask-mode: alpha;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        transform: scaleY(-1) scaleX(1);
+        -webkit-mask-size: 100vw, 100%;
+        mask-size: 100vw, 100%;
+      }
+      .row.primary:after {
+        min-width: 0;
+        transform-origin: center center;
+        content: "";
+        width: 100%;
+        height: 7.5vw;
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 0;
+        background-color: var(--bg-color);
+        -webkit-mask-image: url("data:image/svg+xml,%3csvg%20id='morph'%20fill='none'%20stroke='black'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201440%20123'%3e%3cpath%20d='M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0'%20fill='black'%20id='morph0'%3e%3canimate%20attributeName='d'%20dur='20s'%20repeatCount='indefinite'%20begin='0s'%20values='M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0;%20M0,49c77.24,-28.36%20158.29,-40.65%20240.19,-46.03c29.57,-1.94%2062.42,-5.95%2091.94,-1.81c17.17,2.41%2042.53,11.92%2058.66,17.77c26.63,9.66%2030.82,11.94%2057.61,21.17c57.79,19.9%20118.59,34.81%20180.16,32.78c73.49,-2.43%20136.88,-37.23%20206.33,-56.3c50.6,-13.89%20100.39,-15.01%20151.71,-4.51c10.02,2.05%2019.85,4.98%2029.88,6.96c50.02,9.88%20101.47,14.44%20152.09,20.22c71.15,8.12%20142.38,15.49%20213.64,22.58c2.76,0.27%2054.21,4.15%2057.79,8.97c4.21,5.66%201.11,46.07%20-9.69,51.69c-9.08,4.72%20-20.46,0%20-30.69,0c-20.46,0%20-40.92,0%20-61.38,0c-71.61,0%20-143.22,0%20-214.83,0c-276.21,0%20-552.42,0%20-828.63,0c-71.61,0%20-143.22,0%20-214.83,0c0,0%20-61.38,0%20-61.38,0c-7.18,-1.77%20-15.63,-5.34%20-18.57,-12.12c-4.07,-9.39%200,-20.46%200,-30.69c0,-10.23%200,-20.46%200,-30.69;%20M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0'%20keyTimes='0;%200.51;%201'%20fill='freeze'%20calcMode='spline'%20keySplines='.50%200%20.50%201;.50%200%20.50%201;'%3e%3c/animate%3e%3canimate%20attributeName='fill'%20dur='20s'%20repeatCount='indefinite'%20begin='0s'%20values='black;%20black;%20black'%20keyTimes='0;%200.51;%201'%20fill='freeze'%20calcMode='spline'%20keySplines='.50%200%20.50%201;.50%200%20.50%201;'%3e%3c/animate%3e%3c/path%3e%3c/svg%3e");
+        mask-image: url("data:image/svg+xml,%3csvg%20id='morph'%20fill='none'%20stroke='black'%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201440%20123'%3e%3cpath%20d='M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0'%20fill='black'%20id='morph0'%3e%3canimate%20attributeName='d'%20dur='20s'%20repeatCount='indefinite'%20begin='0s'%20values='M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0;%20M0,49c77.24,-28.36%20158.29,-40.65%20240.19,-46.03c29.57,-1.94%2062.42,-5.95%2091.94,-1.81c17.17,2.41%2042.53,11.92%2058.66,17.77c26.63,9.66%2030.82,11.94%2057.61,21.17c57.79,19.9%20118.59,34.81%20180.16,32.78c73.49,-2.43%20136.88,-37.23%20206.33,-56.3c50.6,-13.89%20100.39,-15.01%20151.71,-4.51c10.02,2.05%2019.85,4.98%2029.88,6.96c50.02,9.88%20101.47,14.44%20152.09,20.22c71.15,8.12%20142.38,15.49%20213.64,22.58c2.76,0.27%2054.21,4.15%2057.79,8.97c4.21,5.66%201.11,46.07%20-9.69,51.69c-9.08,4.72%20-20.46,0%20-30.69,0c-20.46,0%20-40.92,0%20-61.38,0c-71.61,0%20-143.22,0%20-214.83,0c-276.21,0%20-552.42,0%20-828.63,0c-71.61,0%20-143.22,0%20-214.83,0c0,0%20-61.38,0%20-61.38,0c-7.18,-1.77%20-15.63,-5.34%20-18.57,-12.12c-4.07,-9.39%200,-20.46%200,-30.69c0,-10.23%200,-20.46%200,-30.69;%20M0,0c110.81,53.95%20233.01,99.19%20358.21,90.22c73.07,-5.24%20142.08,-28.77%20213.76,-41.68c30.7,-5.53%2061.66,-8.87%2092.86,-9.44c41.65,-0.76%2082.97,3.46%20123.82,11.43c50.97,9.95%20100.69,25.44%20152.02,33.65c51.54,8.25%20103.3,8.16%20155.33,6.67c83.01,-2.37%20165.95,-8.25%20248.71,-14.97c19.91,-1.62%2042.18,-3.51%2062.07,-5.3c10.34,-0.93%2022.82,-9.24%2031.02,-2.86c7.58,5.9%202.71,19.14%202.2,28.73c-0.47,8.84%202.1,20.89%20-5.09,26.06c-8.43,6.06%20-20.77,0%20-31.15,0c-20.77,0%20-41.53,0%20-62.3,0c-83.06,0%20-166.12,0%20-249.19,0c-269.95,0%20-539.9,0%20-809.85,0c-72.68,0%20-145.36,0%20-218.04,0c-10.38,0%20-20.77,0%20-31.15,0c-10.38,0%20-23.33,6.83%20-31.15,0c-7.31,-6.39%20-1.76,-19.35%20-2.09,-29.06c-1.08,-31.04%200,-62.38%200,-93.44c0,0%200,0%200,0'%20keyTimes='0;%200.51;%201'%20fill='freeze'%20calcMode='spline'%20keySplines='.50%200%20.50%201;.50%200%20.50%201;'%3e%3c/animate%3e%3canimate%20attributeName='fill'%20dur='20s'%20repeatCount='indefinite'%20begin='0s'%20values='black;%20black;%20black'%20keyTimes='0;%200.51;%201'%20fill='freeze'%20calcMode='spline'%20keySplines='.50%200%20.50%201;.50%200%20.50%201;'%3e%3c/animate%3e%3c/path%3e%3c/svg%3e");
+        mask-mode: alpha;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        transform: scaleY(1) scaleX(1);
+        -webkit-mask-size: 100vw, 100%;
+        mask-size: 100vw, 100%;
+      }
+      .row.bg {
+        padding: 10px 0;
+      }
+      .rowFlex {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 15px;
+        column-gap: 15px;
+        justify-content: center;
+        padding: 10px;
+      }
+      .hero {
+        display: flex;
+        justify-content: space-around;
+        position: "relative";
+        background-color: "var(--bg-color)";
+        height: 33vh;
+        min-width: 0;
+        align-items: center;
+        padding: 50px 0 20px;
+      }
+      .nametag {
+        border-radius: 20px;
+        padding: 20px;
+        min-width: 0;
+      }
+      .videoIframe {
+        border-radius: 10px;
+        width: 0%;
+        transform: scale(0);
+        transition: 0.1s ease-in-out;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .videoLink {
+        position: relative;
+      }
+      .videoLink:hover .videoIframe {
+        transform: scale(1);
+        width: 500px;
+      }
+      .projectCard {
+        border-radius: 10px;
+        padding: 0;
+        scale: 1;
+        transition: scale 0.1s ease-in-out;
+      }
+      .projectCard:hover {
+        scale: 1.05;
+      }
+      .primary .projectCard {
+        background-color: #050a052e;
+      }
+      .bg .projectCard {
+        background-color: #ffffff2e;
+      }
+      .devIconsFlex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 5px;
+      }
+      .cardBody {
+        padding: 10px 20px;
+      }
+      .cardHead {
+        padding: 10px 10px 0;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      #nav {
+        z-index: 3;
+        position: relative;
+      }
+      .screenShot {
+        width: 100%;
+        height: 200px;
+        overflow-y: hidden;
+        position: relative;
+      }
+      .screenShot img {
+        width: 100%;
+      }
+      .clickInvite {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: var(--bg-color);
+        color: var(--font-color);
+        z-index: 2;
+      }
+      a .clickInvite {
+        scale: 0.5;
+        transition: scale 0.1s ease-in-out;
+      }
+      a:hover .clickInvite {
+        scale: 1;
+      }
+      .betweenRows {
+        display: flex;
+        margin: auto;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
 
   <!-- Common use case: embed HTML text into SVG -->
-  <foreignObject x="20" y="20" width="160" height="160">
+  <foreignObject x="20" y="20" width="100%" height="400px">
     <!--
       In the context of SVG embedded in an HTML document, the XHTML
       namespace could be omitted, but it is mandatory in the
       context of an SVG document
     -->
     <div xmlns="http://www.w3.org/1999/xhtml">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis mollis
-      mi ut ultricies. Nullam magna ipsum, porta vel dui convallis, rutrum
-      imperdiet eros. Aliquam erat volutpat.
+      <div id="root">
+      <div
+        id="nav"
+        style="height: 50px; background-color: var(--primary-color)"
+      >
+        <h3 class="cardHead">RiceCodes</h3>
+      </div>
+      <div class="hero">
+        <img
+          src="./RiceCodes_files/ProfilePic2-YZgmDg_b.svg"
+          alt="A picture of Matt Rice, a friendly and intelligent young man."
+          id="profilePic"
+        />
+        <div class="nametag">
+          <h1>Matt Rice</h1>
+          <h2>Full Stack Web Developer</h2>
+          <h2>matt@ricecodes.com</h2>
+        </div>
+      </div>
+      <div class="row primary">
+        <h2>Featured Projects</h2>
+        <div class="rowFlex">
+          <div class="projectCard" style="max-width: 400px">
+            <h3 class="cardHead">SwiftDismiss</h3>
+            <a
+              href="https://swiftdismiss.com/"
+              target="_blank"
+              style="position: relative"
+              ><div class="clickInvite">Click to visit</div>
+              <div class="screenShot">
+                <img src="./RiceCodes_files/swiftdismiss.png" />
+              </div>
+              <div
+                class="devIconsFlex"
+                style="
+                  position: absolute;
+                  top: 0px;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  padding: 5px 5px 0px;
+                  border-radius: 5px;
+                "
+              >
+                <a href="https://swiftdismiss.com/" target="_blank"
+                  ><img class="devIcon" src="./RiceCodes_files/linkIcon.svg"
+                /></a></div
+            ></a>
+            <div class="cardBody">
+              <div class="devIconsFlex">
+                <img
+                  class="devIcon"
+                  src="./RiceCodes_files/typescript-original.svg"
+                /><img
+                  class="devIcon"
+                  src="./RiceCodes_files/react-original-wordmark.svg"
+                /><img
+                  class="devIcon"
+                  src="./RiceCodes_files/firebase-plain-wordmark.svg"
+                /><img
+                  class="devIcon"
+                  src="./RiceCodes_files/mantine-logo-full.37ba3fa3.svg"
+                />
+              </div>
+              <p style="padding: 10px 0px 0px">
+                SwiftDismiss is a Progressive Web App for managing school
+                dismissal. It is currently in parallel deployment testing
+                alongside my previous app and is scheduled to be released to
+                other schools this summer.
+              </p>
+            </div>
+          </div>
+          <div class="projectCard" style="max-width: 400px">
+            <h3 class="cardHead">SVG Morph</h3>
+            <a
+              href="https://svgmorph.ricecodes.com/"
+              target="_blank"
+              style="position: relative"
+              ><div class="clickInvite">Click to visit</div>
+              <div class="screenShot">
+                <img src="./RiceCodes_files/SVGMorphDemo.gif" />
+              </div>
+              <div
+                class="devIconsFlex"
+                style="
+                  position: absolute;
+                  top: 0px;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  padding: 5px 5px 0px;
+                  border-radius: 5px;
+                "
+              >
+                <a href="https://svgmorph.ricecodes.com/" target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="./RiceCodes_files/linkIcon.svg" /></a
+                ><a
+                  href="https://www.youtube-nocookie.com/embed/https://www.youtube-nocookie.com/embed/g2cFuDdwop4?si=-CQlKNyWN6NOdJ6t"
+                  target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="data:image/svg+xml,%3c?xml%20version=%271.0%27%20encoding=%27iso-8859-1%27?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20height=%27800px%27%20width=%27800px%27%20version=%271.1%27%20id=%27Layer_1%27%20xmlns=%27http://www.w3.org/2000/svg%27%20xmlns:xlink=%27http://www.w3.org/1999/xlink%27%20viewBox=%270%200%20461.001%20461.001%27%20xml:space=%27preserve%27%3e%3cg%3e%3cpath%20style=%27fill:%23F61C0D;%27%20d=%27M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728%20c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137%20C461.001,110.259,418.135,67.393,365.257,67.393z%20M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607%20c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z%27/%3e%3c/g%3e%3c/svg%3e" /></a
+                ><a href="https://github.com/Rice-Tech/svgmorph" target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="./RiceCodes_files/github-original-wordmark.svg"
+                /></a></div
+            ></a>
+            <div class="cardBody">
+              <div class="devIconsFlex">
+                <img
+                  class="devIcon"
+                  src="./RiceCodes_files/typescript-original.svg"
+                /><img
+                  class="devIcon"
+                  src="./RiceCodes_files/css3-original-wordmark.svg"
+                /><img
+                  class="devIcon"
+                  src="./RiceCodes_files/react-original-wordmark.svg"
+                />
+              </div>
+              <p style="padding: 10px 0px 0px">
+                SVG Morph Creates SMIL or CSS morph animations between any
+                scalable vector graphics (SVG) images. I created it for this
+                website and to create cinematic credits animations for a movie I
+                produced.
+              </p>
+            </div>
+          </div>
+          <div class="projectCard" style="max-width: 400px">
+            <h3 class="cardHead">Tumblewords</h3>
+            <a
+              href="https://tumblewords-dev.web.app/"
+              target="_blank"
+              style="position: relative"
+              ><div class="clickInvite">Click to visit</div>
+              <div class="screenShot">
+                <img src="./RiceCodes_files/tumblewords.png" />
+              </div>
+              <div
+                class="devIconsFlex"
+                style="
+                  position: absolute;
+                  top: 0px;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  padding: 5px 5px 0px;
+                  border-radius: 5px;
+                "
+              >
+                <a href="https://tumblewords-dev.web.app/" target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="./RiceCodes_files/linkIcon.svg" /></a
+                ><a
+                  href="https://github.com/Rice-Tech/concert-cues/"
+                  target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="./RiceCodes_files/github-original-wordmark.svg"
+                /></a></div
+            ></a>
+            <div class="cardBody">
+              <div class="devIconsFlex">
+                <img
+                  class="devIcon"
+                  src="./RiceCodes_files/typescript-original.svg"
+                /><img
+                  class="devIcon"
+                  src="./RiceCodes_files/react-original-wordmark.svg"
+                />
+              </div>
+              <p style="padding: 10px 0px 0px">
+                I led a six person team to create Tumblewords in one week.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row bg">
+        <h2>More Projects</h2>
+        <div class="rowFlex">
+          <div class="projectCard" style="max-width: 300px">
+            <h3 class="cardHead">Concert Cues</h3>
+            <a
+              href="https://concert-cues.web.app/"
+              target="_blank"
+              style="position: relative"
+              ><div class="clickInvite">Click to visit</div>
+              <div class="screenShot">
+                <img src="./RiceCodes_files/maxresdefault.jpg" />
+              </div>
+              <div
+                class="devIconsFlex"
+                style="
+                  position: absolute;
+                  top: 0px;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  padding: 5px 5px 0px;
+                  border-radius: 5px;
+                "
+              >
+                <a href="https://concert-cues.web.app/" target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="./RiceCodes_files/linkIcon.svg" /></a
+                ><a
+                  href="https://www.youtube-nocookie.com/embed/MFz-2v0qFZQ"
+                  target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="data:image/svg+xml,%3c?xml%20version=%271.0%27%20encoding=%27iso-8859-1%27?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20height=%27800px%27%20width=%27800px%27%20version=%271.1%27%20id=%27Layer_1%27%20xmlns=%27http://www.w3.org/2000/svg%27%20xmlns:xlink=%27http://www.w3.org/1999/xlink%27%20viewBox=%270%200%20461.001%20461.001%27%20xml:space=%27preserve%27%3e%3cg%3e%3cpath%20style=%27fill:%23F61C0D;%27%20d=%27M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728%20c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137%20C461.001,110.259,418.135,67.393,365.257,67.393z%20M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607%20c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z%27/%3e%3c/g%3e%3c/svg%3e" /></a
+                ><a
+                  href="https://github.com/Rice-Tech/concert-cues"
+                  target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="./RiceCodes_files/github-original-wordmark.svg"
+                /></a></div
+            ></a>
+            <div class="cardBody">
+              <div class="devIconsFlex"></div>
+              <p style="padding: 10px 0px 0px">
+                A simple React/Firebase app that I used to call classes to the
+                school Christmas concert.
+              </p>
+            </div>
+          </div>
+          <div class="projectCard" style="max-width: 300px">
+            <h3 class="cardHead">Spaced Repetition Flashcards</h3>
+            <a
+              href="https://www.youtube-nocookie.com/embed/OjJNL6EwHjM"
+              target="_blank"
+              style="position: relative"
+              ><div class="clickInvite">Click to watch demo</div>
+              <div class="screenShot">
+                <img src="./RiceCodes_files/maxresdefault(1).jpg" />
+              </div>
+              <div
+                class="devIconsFlex"
+                style="
+                  position: absolute;
+                  top: 0px;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  padding: 5px 5px 0px;
+                  border-radius: 5px;
+                "
+              >
+                <a
+                  href="https://www.youtube-nocookie.com/embed/OjJNL6EwHjM"
+                  target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="data:image/svg+xml,%3c?xml%20version=%271.0%27%20encoding=%27iso-8859-1%27?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20height=%27800px%27%20width=%27800px%27%20version=%271.1%27%20id=%27Layer_1%27%20xmlns=%27http://www.w3.org/2000/svg%27%20xmlns:xlink=%27http://www.w3.org/1999/xlink%27%20viewBox=%270%200%20461.001%20461.001%27%20xml:space=%27preserve%27%3e%3cg%3e%3cpath%20style=%27fill:%23F61C0D;%27%20d=%27M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728%20c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137%20C461.001,110.259,418.135,67.393,365.257,67.393z%20M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607%20c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z%27/%3e%3c/g%3e%3c/svg%3e"
+                /></a></div
+            ></a>
+            <div class="cardBody">
+              <div class="devIconsFlex"></div>
+              <p style="padding: 10px 0px 0px">
+                A spaced repetition flashcard program inspired by Anki that I
+                coded for my 6th grade students to study for their midterm.
+              </p>
+            </div>
+          </div>
+          <div class="projectCard" style="max-width: 300px">
+            <h3 class="cardHead">Classroom Participation Logger</h3>
+            <a
+              href="https://www.youtube-nocookie.com/embed/H9rdRUbNcR0"
+              target="_blank"
+              style="position: relative"
+              ><div class="clickInvite">Click to watch demo</div>
+              <div class="screenShot">
+                <img src="./RiceCodes_files/maxresdefault(2).jpg" />
+              </div>
+              <div
+                class="devIconsFlex"
+                style="
+                  position: absolute;
+                  top: 0px;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  padding: 5px 5px 0px;
+                  border-radius: 5px;
+                "
+              >
+                <a
+                  href="https://www.youtube-nocookie.com/embed/H9rdRUbNcR0"
+                  target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="data:image/svg+xml,%3c?xml%20version=%271.0%27%20encoding=%27iso-8859-1%27?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20height=%27800px%27%20width=%27800px%27%20version=%271.1%27%20id=%27Layer_1%27%20xmlns=%27http://www.w3.org/2000/svg%27%20xmlns:xlink=%27http://www.w3.org/1999/xlink%27%20viewBox=%270%200%20461.001%20461.001%27%20xml:space=%27preserve%27%3e%3cg%3e%3cpath%20style=%27fill:%23F61C0D;%27%20d=%27M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728%20c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137%20C461.001,110.259,418.135,67.393,365.257,67.393z%20M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607%20c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z%27/%3e%3c/g%3e%3c/svg%3e"
+                /></a></div
+            ></a>
+            <div class="cardBody">
+              <div class="devIconsFlex"></div>
+              <p style="padding: 10px 0px 0px">
+                A Vanilla JS app tightly integrated with Google Classroom API to
+                track student participation.
+              </p>
+            </div>
+          </div>
+          <div class="projectCard" style="max-width: 300px">
+            <h3 class="cardHead">UltraCrew</h3>
+            <a
+              href="https://ricecodes.pythonanywhere.com/"
+              target="_blank"
+              style="position: relative"
+              ><div class="clickInvite">Click to visit</div>
+              <div class="screenShot">
+                <img src="./RiceCodes_files/ultracrew.png" />
+              </div>
+              <div
+                class="devIconsFlex"
+                style="
+                  position: absolute;
+                  top: 0px;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  padding: 5px 5px 0px;
+                  border-radius: 5px;
+                "
+              >
+                <a href="https://ricecodes.pythonanywhere.com/" target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="./RiceCodes_files/linkIcon.svg" /></a
+                ><a
+                  href="https://www.youtube-nocookie.com/embed/https://www.youtube.com/embed/dQhCoqGzgHE?si=GEgG_ngST2AmQIlV"
+                  target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="data:image/svg+xml,%3c?xml%20version=%271.0%27%20encoding=%27iso-8859-1%27?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20height=%27800px%27%20width=%27800px%27%20version=%271.1%27%20id=%27Layer_1%27%20xmlns=%27http://www.w3.org/2000/svg%27%20xmlns:xlink=%27http://www.w3.org/1999/xlink%27%20viewBox=%270%200%20461.001%20461.001%27%20xml:space=%27preserve%27%3e%3cg%3e%3cpath%20style=%27fill:%23F61C0D;%27%20d=%27M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728%20c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137%20C461.001,110.259,418.135,67.393,365.257,67.393z%20M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607%20c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z%27/%3e%3c/g%3e%3c/svg%3e" /></a
+                ><a
+                  href="https://github.com/Rice-Tech/UltraCrew"
+                  target="_blank"
+                  ><img
+                    class="devIcon"
+                    src="./RiceCodes_files/github-original-wordmark.svg"
+                /></a></div
+            ></a>
+            <div class="cardBody">
+              <div class="devIconsFlex">
+                <img
+                  class="devIcon"
+                  src="./RiceCodes_files/python-original-wordmark.svg"
+                /><img
+                  class="devIcon"
+                  src="./RiceCodes_files/django-plain-wordmark.svg"
+                /><img
+                  class="devIcon"
+                  src="./RiceCodes_files/javascript-original.svg"
+                /><img
+                  class="devIcon"
+                  src="./RiceCodes_files/sqlite-original-wordmark.svg"
+                />
+              </div>
+              <p style="padding: 10px 0px 0px">
+                UltraCrew is a full-stack webapp using Django that predicts when
+                a ultramarathon runner will arrive at aid stations. Users can
+                define their own races with variable numbers of aid stations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row primary">
+        <h2>Work Experience</h2>
+        <div class="rowFlex"></div>
+      </div>
+    </div>
     </div>
   </foreignObject>
 </svg>
